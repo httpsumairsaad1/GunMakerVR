@@ -1,0 +1,66 @@
+<Panel width="72" height="34">
+  <div id="card" class="card">
+    <div class="topline">
+      <span class="brand">GUNSMITH / WORKSHOP</span>
+      <span id="wallet">CREDITS  |  LV 1  |  0 XP</span>
+    </div>
+    <div id="selection" class="selection">Choose a gun from the wall</div>
+    <div id="hint" class="hint">Pinch to grab. Hold to move. Turn it to inspect.</div>
+    <button id="strip-part" class="action">REMOVE NEXT PART</button>
+    <div id="reward" class="reward">+XP and credits appear here</div>
+  </div>
+</Panel>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 72;
+    height: 34;
+    padding: 2.4;
+    background-color: #20292d;
+    border-color: #c28a49;
+    border-width: 0.35;
+    border-radius: 2.2;
+    color: #f2e7d4;
+  }
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2;
+    height: 5;
+    font-size: 2.2;
+    font-weight: 700;
+    color: #e0a257;
+  }
+  .brand { font-size: 2.2; font-weight: 700; }
+  #wallet { font-size: 2; font-weight: 700; color: #f2e7d4; }
+  .selection {
+    width: 66;
+    height: 7;
+    font-size: 3.2;
+    font-weight: 700;
+    color: #f2e7d4;
+  }
+  .hint { width: 66; height: 4; font-size: 1.8; color: #b8c5c5; }
+  .action {
+    width: 66;
+    height: 7;
+    background-color: #d78c43;
+    border-color: #f0c27f;
+    border-width: 0.25;
+    border-radius: 1.5;
+    font-size: 2.4;
+    font-weight: 700;
+    color: #171d20;
+  }
+  .reward {
+    width: 66;
+    height: 4;
+    font-size: 2;
+    font-weight: 700;
+    color: #58d1a5;
+  }
+</style>
