@@ -1,0 +1,145 @@
+{
+  "version": "iwsdk.scene.v1",
+  "units": "meters",
+  "components": {
+    "com.iwsdk.components.DomeGradient": {
+      "sky": [0.18, 0.13, 0.1, 1],
+      "equator": [0.25, 0.22, 0.19, 1],
+      "ground": [0.1, 0.09, 0.08, 1],
+      "elevationDeg": 24,
+      "azimuthDeg": -31,
+      "dither": true
+    },
+    "com.iwsdk.components.IBLGradient": {
+      "sky": [0.62, 0.55, 0.46, 1],
+      "equator": [0.48, 0.46, 0.43, 1],
+      "ground": [0.24, 0.22, 0.2, 1],
+      "intensity": 0.55
+    }
+  },
+  "player": {
+    "transform": {
+      "position": [0, 0, 0],
+      "rotationDeg": [0, 0, 0]
+    }
+  },
+  "environment": {
+    "toneMapping": "aces",
+    "exposure": 1.15,
+    "shadows": false,
+    "shadowMapType": "pcf"
+  },
+  "resources": {},
+  "authoring": {
+    "views": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "projection": "perspective",
+        "position": [0.42, 1.32, 0.34],
+        "target": [0, 0.45, -0.8],
+        "fov": 65
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "studio-floor",
+      "name": "Workshop Floor",
+      "framingRole": "support",
+      "content": {
+        "type": "asset",
+        "asset": "studio-floor"
+      },
+      "components": {
+        "DomeFade": {
+          "start": 4,
+          "end": 10
+        }
+      }
+    },
+    {
+      "id": "workbench",
+      "name": "Gunsmith Workbench",
+      "content": {
+        "type": "asset",
+        "asset": "workbench"
+      },
+      "transform": {
+        "position": [0, 0, -0.8]
+      },
+      "children": [
+        {
+          "id": "workbench-contact",
+          "name": "Workbench Contact Shadow",
+          "transform": {
+            "position": [0, 0.002, 0]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [1.32, 0.78],
+              "height": 0.0015
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "warm-key",
+      "name": "Warm Key Light",
+      "transform": {
+        "position": [-2, 3.8, 1.5],
+        "rotationDeg": [-42, -24, 0]
+      },
+      "components": {
+        "DirectionalLight": {
+          "color": [1, 0.78, 0.58, 1],
+          "intensity": 3.2,
+          "castShadow": false
+        }
+      }
+    },
+    {
+      "id": "soft-fill",
+      "name": "Soft Workshop Fill",
+      "components": {
+        "HemisphereLight": {
+          "skyColor": [0.62, 0.7, 0.82, 1],
+          "groundColor": [0.24, 0.18, 0.14, 1],
+          "intensity": 1.1
+        }
+      }
+    },
+    {
+      "id": "cool-rim",
+      "name": "Cool Rim Light",
+      "transform": {
+        "position": [1.7, 2.8, -2.4],
+        "rotationDeg": [-140, 0, 0]
+      },
+      "components": {
+        "DirectionalLight": {
+          "color": [0.55, 0.7, 1, 1],
+          "intensity": 1.45,
+          "castShadow": false
+        }
+      }
+    },
+    {
+      "id": "forge-glow",
+      "name": "Future Forge Glow",
+      "transform": {
+        "position": [0, 0.98, -0.84]
+      },
+      "components": {
+        "PointLight": {
+          "color": [1, 0.36, 0.12, 1],
+          "intensity": 1.8,
+          "distance": 1.1,
+          "decay": 2,
+          "castShadow": false
+        }
+      }
+    }
+  ]
+}
