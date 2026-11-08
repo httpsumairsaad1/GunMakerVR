@@ -27,17 +27,19 @@ export const InteractionHighlight = createComponent('InteractionHighlight', {
   pulse: { type: Types.Boolean, default: false },
 });
 
+export const AssemblyPart = createComponent('AssemblyPart', {
+  weaponId: { type: Types.String, default: '' },
+  slot: { type: Types.String, default: '' },
+  attachX: { type: Types.Float32, default: 0 },
+  attachY: { type: Types.Float32, default: 0 },
+  attachZ: { type: Types.Float32, default: 0 },
+  attached: { type: Types.Boolean, default: false },
+});
+
 export const TutorialProgress = createComponent('TutorialProgress', {
   step: { type: Types.Int8, default: 0 },
   active: { type: Types.Boolean, default: true },
   complete: { type: Types.Boolean, default: false },
-});
-
-export const AttachedAccessory = createComponent('AttachedAccessory', {
-  target: { type: Types.Entity, default: null },
-  offsetX: { type: Types.Float32, default: 0 },
-  offsetY: { type: Types.Float32, default: 0.12 },
-  offsetZ: { type: Types.Float32, default: 0 },
 });
 
 export default defineComponents([
@@ -45,6 +47,6 @@ export default defineComponents([
   WorkshopItem,
   WorkshopWallet,
   InteractionHighlight,
+  AssemblyPart,
   TutorialProgress,
-  AttachedAccessory,
 ]);

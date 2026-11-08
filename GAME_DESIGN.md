@@ -22,7 +22,7 @@ Design tests every feature must pass:
 - **IWSDK Studio (Scene Editor):** open it from the managed browser window (the Runtime/Editor toggle after `npm run dev`). Use it to place and inspect objects and edit component values. Use code for behaviour. Remember the editor does not run systems, so confirm system-driven behaviour in Runtime. Open the editor at the start of every scene step and check `scene_get_state`.
 
 ## 2. Concept
-You are a master gunsmith. Build guns from modular parts, **weld** them, test them at a range, earn money and XP, unlock skins, and fill your safe with a collection of 6+ guns.
+You are a master gunsmith. Build guns from modular parts, **weld** them, test them at a range, earn money and XP, unlock skins, and fill your safe with a collection of five signature guns.
 
 **Signature mechanic: the Weld Forge.** Trace a glowing seam with a torch at the right speed. Weld quality (Weak / Solid / Perfect) changes the gun's accuracy, durability and sell value. This is the "only works in VR" hook.
 
@@ -85,7 +85,7 @@ The bench is visually large (about 1.6 m wide), but **everything the player must
 ## 6. Data model (draft; keep in `src/data/`)
 Part: `id, name, slot, rarity, price, unlockLevel, stats{damage, accuracy, fireRate, recoil, magSize, weight}, compatibleFrames[]`.
 Slots: `barrel, magazine, stock, sight, grip, muzzle, underBarrel`.
-Gun archetypes (6): Revolver, Compact Pistol, SMG, Hunting Rifle, Pump Shotgun, Sniper Rifle. Stretch: Plasma Rail Gun.
+Gun archetypes (5): Bolt Sniper, Drum Pump Shotgun, Assault Rifle, Revolver Grenade Launcher, Drum Pistol.
 Starter content (20+ items): 3 barrels, 3 magazines, 3 stocks, 3 sights (iron, red dot, scope), 2 grips, suppressor, muzzle brake, laser, foregrip. Tools: torch, screwdriver, wrench, hammer, pliers, oil can, vise, goggles.
 Weld quality multiplier: Weak 0.85, Solid 1.0, Perfect 1.15 on accuracy and durability.
 Skin: `id, name, rarity, unlockLevel, price, materialParams`. Skins are cosmetic material swaps applied at a paint station.
@@ -97,7 +97,7 @@ Save (localStorage, wrapped in try/catch): money, XP, level, unlocked parts and 
 3. **Weld Forge:** seam is a list of points. Progress rises when torch tip is near the seam and moving within a speed band. Too fast = Weak, too slow = overheat (burn), steady = Perfect. Pooled sparks, heat glow cooling white, orange, dark, bead trail.
 4. **Disassembly and repair:** gun in the vise, pull parts off (screwdriver hold, hammer tap for welds). Durability, rust or cracks, repair station with progress ring.
 5. **Range:** hold the gun, aim with hand direction. Recoil kick, bullet drop, spread from barrel and sight, tracer and muzzle flash. Targets: static, sliding, popup. Pay for accuracy, streaks, distance.
-6. **Economy and progression:** coins fly out on payout. XP from builds, welds, repairs, hits. Levels unlock parts, guns, skins, order types. First gun is fast. Full 6-gun collection takes about 30-45 minutes.
+6. **Economy and progression:** coins fly out on payout. XP from builds, welds, repairs, hits. Levels unlock parts, guns, skins, order types. First gun is fast. Full five-gun collection takes about 30-45 minutes.
 7. **Orders:** blueprint requests like "accuracy 70+, mag 12+". Bonus cash and reputation.
 8. **Safe:** drop a gun in, the door closes, miniature collection rack with stats. Collection counter.
 9. **Guide cards:** floating card with icon and a line under 8 words, near the relevant object. Hides after first success. A "?" pad brings any card back. No text walls.

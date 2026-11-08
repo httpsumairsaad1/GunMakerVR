@@ -9,11 +9,7 @@ import { AssetType, defineAssets } from '@iwsdk/core';
 import gunPack from '../VRGunMaker_Guns_LowPoly/manifest.json';
 import { createStudioFloor } from './scene-assets/studio.scene-asset.js';
 import { createWorkbench } from './scene-assets/workbench.scene-asset.js';
-import {
-  accessories,
-  createGunWall,
-  tools,
-} from './scene-assets/arsenal.scene-asset.js';
+import { createGunWall } from './scene-assets/arsenal.scene-asset.js';
 
 const gunModelUrls = import.meta.glob(
   '../VRGunMaker_Guns_LowPoly/**/*.glb',
@@ -50,8 +46,4 @@ export default defineAssets({
     url: `${import.meta.env.BASE_URL}ui/workshop-card.uikitml`,
     type: AssetType.UIKitML,
   },
-  ...Object.fromEntries(
-    Object.entries(accessories).map(([id, create]) => [id, create()]),
-  ),
-  ...Object.fromEntries(Object.entries(tools).map(([id, create]) => [id, create()])),
 });

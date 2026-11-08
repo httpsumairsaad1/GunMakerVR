@@ -1,399 +1,833 @@
 {
-  "version": "iwsdk.scene.v1",
-  "units": "meters",
-  "components": {
-    "com.iwsdk.components.DomeGradient": {
-      "sky": [0.18, 0.13, 0.1, 1],
-      "equator": [0.25, 0.22, 0.19, 1],
-      "ground": [0.1, 0.09, 0.08, 1],
-      "elevationDeg": 24,
-      "azimuthDeg": -31,
-      "dither": true
-    },
-    "com.iwsdk.components.IBLGradient": {
-      "sky": [0.62, 0.55, 0.46, 1],
-      "equator": [0.48, 0.46, 0.43, 1],
-      "ground": [0.24, 0.22, 0.2, 1],
-      "intensity": 0.55
-    }
-  },
-  "player": {
-    "transform": {
-      "position": [0, 0, 0],
-      "rotationDeg": [0, 0, 0]
-    }
-  },
-  "environment": {
-    "toneMapping": "aces",
-    "exposure": 1.15,
-    "shadows": false,
-    "shadowMapType": "pcf"
-  },
-  "resources": {},
   "authoring": {
     "views": [
       {
+        "fov": 82,
         "id": "hero",
-        "role": "hero",
+        "position": [
+          0.4,
+          1.65,
+          0.35
+        ],
         "projection": "perspective",
-        "position": [0.3, 1.55, 0.5],
-        "target": [0, 1.42, -1.25],
-        "fov": 82
+        "role": "hero",
+        "target": [
+          -0.28,
+          1.12,
+          -0.65
+        ]
       }
     ]
   },
+  "components": {
+    "com.iwsdk.components.DomeGradient": {
+      "azimuthDeg": -31,
+      "dither": true,
+      "elevationDeg": 24,
+      "equator": [
+        0.25,
+        0.22,
+        0.19,
+        1
+      ],
+      "ground": [
+        0.1,
+        0.09,
+        0.08,
+        1
+      ],
+      "sky": [
+        0.18,
+        0.13,
+        0.1,
+        1
+      ]
+    },
+    "com.iwsdk.components.IBLGradient": {
+      "equator": [
+        0.48,
+        0.46,
+        0.43,
+        1
+      ],
+      "ground": [
+        0.24,
+        0.22,
+        0.2,
+        1
+      ],
+      "intensity": 0.55,
+      "sky": [
+        0.62,
+        0.55,
+        0.46,
+        1
+      ]
+    }
+  },
+  "environment": {
+    "exposure": 1.15,
+    "shadowMapType": "pcf",
+    "shadows": false,
+    "toneMapping": "aces"
+  },
   "nodes": [
     {
-      "id": "studio-floor",
-      "name": "Workshop Floor",
-      "framingRole": "support",
-      "content": {
-        "type": "asset",
-        "asset": "studio-floor"
-      },
       "components": {
         "DomeFade": {
-          "start": 4,
-          "end": 10
+          "end": 10,
+          "start": 4
         }
-      }
+      },
+      "content": {
+        "asset": "studio-floor",
+        "type": "asset"
+      },
+      "framingRole": "support",
+      "id": "studio-floor",
+      "name": "Workshop Floor"
     },
     {
-      "id": "workbench",
-      "name": "Gunsmith Workbench",
-      "content": {
-        "type": "asset",
-        "asset": "workbench"
-      },
-      "transform": {
-        "position": [0, 0, -0.8]
-      },
       "children": [
         {
+          "components": {
+            "ContactShadow": {
+              "height": 0.0015,
+              "size": [
+                1.32,
+                0.78
+              ]
+            }
+          },
           "id": "workbench-contact",
           "name": "Workbench Contact Shadow",
           "transform": {
-            "position": [0, 0.002, 0]
-          },
-          "components": {
-            "ContactShadow": {
-              "size": [1.32, 0.78],
-              "height": 0.0015
-            }
+            "position": [
+              0,
+              0.002,
+              0
+            ]
           }
         }
-      ]
+      ],
+      "content": {
+        "asset": "workbench",
+        "type": "asset"
+      },
+      "id": "workbench",
+      "name": "Gunsmith Workbench",
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.65
+        ]
+      }
     },
     {
+      "components": {
+        "DirectionalLight": {
+          "castShadow": false,
+          "color": [
+            1,
+            0.78,
+            0.58,
+            1
+          ],
+          "intensity": 3.2
+        }
+      },
       "id": "warm-key",
       "name": "Warm Key Light",
       "transform": {
-        "position": [-2, 3.8, 1.5],
-        "rotationDeg": [-42, -24, 0]
-      },
-      "components": {
-        "DirectionalLight": {
-          "color": [1, 0.78, 0.58, 1],
-          "intensity": 3.2,
-          "castShadow": false
-        }
+        "position": [
+          -2,
+          3.8,
+          1.5
+        ],
+        "rotationDeg": [
+          -42,
+          -24,
+          0
+        ]
       }
     },
     {
-      "id": "soft-fill",
-      "name": "Soft Workshop Fill",
       "components": {
         "HemisphereLight": {
-          "skyColor": [0.62, 0.7, 0.82, 1],
-          "groundColor": [0.24, 0.18, 0.14, 1],
-          "intensity": 1.1
+          "groundColor": [
+            0.24,
+            0.18,
+            0.14,
+            1
+          ],
+          "intensity": 1.1,
+          "skyColor": [
+            0.62,
+            0.7,
+            0.82,
+            1
+          ]
         }
-      }
+      },
+      "id": "soft-fill",
+      "name": "Soft Workshop Fill"
     },
     {
+      "components": {
+        "DirectionalLight": {
+          "castShadow": false,
+          "color": [
+            0.55,
+            0.7,
+            1,
+            1
+          ],
+          "intensity": 1.45
+        }
+      },
       "id": "cool-rim",
       "name": "Cool Rim Light",
       "transform": {
-        "position": [1.7, 2.8, -2.4],
-        "rotationDeg": [-140, 0, 0]
-      },
-      "components": {
-        "DirectionalLight": {
-          "color": [0.55, 0.7, 1, 1],
-          "intensity": 1.45,
-          "castShadow": false
-        }
+        "position": [
+          1.7,
+          2.8,
+          -2.4
+        ],
+        "rotationDeg": [
+          -140,
+          0,
+          0
+        ]
       }
     },
     {
+      "components": {
+        "PointLight": {
+          "castShadow": false,
+          "color": [
+            1,
+            0.36,
+            0.12,
+            1
+          ],
+          "decay": 2,
+          "distance": 1.1,
+          "intensity": 1.8
+        }
+      },
       "id": "forge-glow",
       "name": "Future Forge Glow",
       "transform": {
-        "position": [0, 0.98, -0.84]
+        "position": [
+          0,
+          0.98,
+          -0.84
+        ]
+      }
+    },
+    {
+      "content": {
+        "asset": "gun-wall",
+        "type": "asset"
       },
+      "id": "collection-wall",
+      "name": "Five-Gun Collection Wall",
+      "transform": {
+        "position": [
+          -0.62,
+          1.33,
+          -0.5
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.3
+      }
+    },
+    {
       "components": {
-        "PointLight": {
-          "color": [1, 0.36, 0.12, 1],
-          "intensity": 1.8,
-          "distance": 1.1,
-          "decay": 2,
-          "castShadow": false
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "TwoHandsGrabbable": {
+          "rotate": true,
+          "scale": false,
+          "translate": true
+        },
+        "WorkshopItem": {
+          "itemId": "gun-assault-rifle",
+          "strippedCount": 0
+        }
+      },
+      "content": {
+        "asset": "gun-assault-rifle",
+        "type": "asset"
+      },
+      "id": "gun-assault-rifle",
+      "name": "Assault Rifle",
+      "transform": {
+        "position": [
+          -0.52,
+          1.34,
+          -0.9
+        ],
+        "rotationDeg": [
+          0,
+          -90,
+          0
+        ],
+        "scale": 0.38
+      }
+    },
+    {
+      "components": {
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "TwoHandsGrabbable": {
+          "rotate": true,
+          "scale": false,
+          "translate": true
+        },
+        "WorkshopItem": {
+          "itemId": "gun-bolt-sniper",
+          "strippedCount": 0
+        }
+      },
+      "content": {
+        "asset": "gun-bolt-sniper",
+        "type": "asset"
+      },
+      "id": "gun-bolt-sniper",
+      "name": "Bolt Sniper",
+      "transform": {
+        "position": [
+          -0.52,
+          1.34,
+          -0.7
+        ],
+        "rotationDeg": [
+          0,
+          -90,
+          0
+        ],
+        "scale": [
+          0.4,
+          0.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "components": {
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "TwoHandsGrabbable": {
+          "rotate": true,
+          "scale": false,
+          "translate": true
+        },
+        "WorkshopItem": {
+          "itemId": "gun-drum-shotgun",
+          "strippedCount": 0
+        }
+      },
+      "content": {
+        "asset": "gun-drum-shotgun",
+        "type": "asset"
+      },
+      "id": "gun-drum-shotgun",
+      "name": "Drum Pump Shotgun",
+      "transform": {
+        "position": [
+          -0.52,
+          1.34,
+          -0.5
+        ],
+        "rotationDeg": [
+          0,
+          -90,
+          0
+        ],
+        "scale": [
+          0.4,
+          0.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "components": {
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "TwoHandsGrabbable": {
+          "rotate": true,
+          "scale": false,
+          "translate": true
+        },
+        "WorkshopItem": {
+          "itemId": "gun-grenade-launcher",
+          "strippedCount": 0
+        }
+      },
+      "content": {
+        "asset": "gun-grenade-launcher",
+        "type": "asset"
+      },
+      "id": "gun-grenade-launcher",
+      "name": "Revolver Grenade Launcher",
+      "transform": {
+        "position": [
+          -0.52,
+          1.34,
+          -0.3
+        ],
+        "rotationDeg": [
+          0,
+          -90,
+          0
+        ],
+        "scale": [
+          0.42,
+          0.42,
+          0.42
+        ]
+      }
+    },
+    {
+      "components": {
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "gun-drum-pistol",
+          "strippedCount": 0
+        }
+      },
+      "content": {
+        "asset": "gun-drum-pistol",
+        "type": "asset"
+      },
+      "id": "gun-drum-pistol",
+      "name": "Drum Pistol",
+      "transform": {
+        "position": [
+          -0.52,
+          1.34,
+          -0.1
+        ],
+        "rotationDeg": [
+          0,
+          -90,
+          0
+        ],
+        "scale": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-receiver"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-receiver",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-receiver",
+      "name": "Demo Assault Rifle - Receiver",
+      "transform": {
+        "position": [
+          -0.12,
+          0.816,
+          -0.42
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-barrel"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-barrel",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-barrel",
+      "name": "Demo Assault Rifle - Barrel",
+      "transform": {
+        "position": [
+          -0.18,
+          0.765,
+          -0.45
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-handguard"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-handguard",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-handguard",
+      "name": "Demo Assault Rifle - Handguard",
+      "transform": {
+        "position": [
+          0,
+          0.799,
+          -0.35
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-magazine"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-magazine",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-magazine",
+      "name": "Demo Assault Rifle - Magazine",
+      "transform": {
+        "position": [
+          -0.22,
+          0.863,
+          -0.53
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-stock"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-stock",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-stock",
+      "name": "Demo Assault Rifle - Stock",
+      "transform": {
+        "position": [
+          0,
+          0.798,
+          -0.43
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-grip"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-grip",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-grip",
+      "name": "Demo Assault Rifle - Grip",
+      "transform": {
+        "position": [
+          -0.05,
+          0.826,
+          -0.32
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "AssemblyPart": {},
+        "DistanceGrabbable": {
+          "movementMode": "MoveTowardsTarget",
+          "returnToOrigin": true,
+          "scale": false
+        },
+        "Interactable": {},
+        "InteractionHighlight": {},
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "WorkshopItem": {
+          "itemId": "part-assault-rifle-rear-sight"
+        }
+      },
+      "content": {
+        "asset": "part-assault-rifle-rear-sight",
+        "type": "asset"
+      },
+      "id": "demo-rifle-part-rear_sight",
+      "name": "Demo Assault Rifle - Rear Sight",
+      "transform": {
+        "position": [
+          -0.28,
+          0.756,
+          -0.33
+        ],
+        "rotationDeg": [
+          0,
+          90,
+          0
+        ],
+        "scale": 0.6
+      }
+    },
+    {
+      "components": {
+        "OneHandGrabbable": {
+          "rotate": true,
+          "translate": true
+        },
+        "PokeInteractable": {},
+        "RayInteractable": {},
+        "TutorialProgress": {
+          "active": true,
+          "complete": false,
+          "step": 0
+        },
+        "WorkshopWallet": {
+          "credits": 250,
+          "level": 1,
+          "score": 0,
+          "xp": 0
+        }
+      },
+      "content": {
+        "asset": "workshop-card",
+        "type": "asset"
+      },
+      "id": "workshop-panel",
+      "name": "Gunsmith Reward Card",
+      "transform": {
+        "position": [
+          0.35,
+          1.36,
+          -1.18
+        ]
+      }
+    }
+  ],
+  "player": {
+    "camera": {
+      "components": {
+        "com.iwsdk.components.CameraSource": {
+          "deviceId": "",
+          "facing": "unknown",
+          "frameRate": 30,
+          "height": 1080,
+          "state": "inactive",
+          "stream": null,
+          "texture": null,
+          "videoElement": null,
+          "width": 1920
         }
       }
     },
-    {
-      "id": "collection-wall",
-      "name": "Six-Gun Collection Wall",
-      "content": {
-        "type": "asset",
-        "asset": "gun-wall"
-      },
-      "transform": {
-        "position": [0, 1.72, -2.0]
-      }
-    },
-    {
-      "id": "gun-revolver",
-      "name": "Trailblazer Revolver",
-      "content": { "type": "asset", "asset": "gun-revolver" },
-      "transform": { "position": [-1.14, 1.26, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-revolver", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "gun-pistol",
-      "name": "Sparrow Compact",
-      "content": { "type": "asset", "asset": "gun-pistol" },
-      "transform": { "position": [0, 1.26, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-pistol", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "gun-smg",
-      "name": "Rook Burst SMG",
-      "content": { "type": "asset", "asset": "gun-smg" },
-      "transform": { "position": [1.14, 1.26, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-smg", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "TwoHandsGrabbable": { "rotate": true, "translate": true, "scale": false },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "gun-rifle",
-      "name": "Longshot Scout Rifle",
-      "content": { "type": "asset", "asset": "gun-rifle" },
-      "transform": { "position": [-1.14, 2.02, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-rifle", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "TwoHandsGrabbable": { "rotate": true, "translate": true, "scale": false },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "gun-shotgun",
-      "name": "Boreal Pump Shotgun",
-      "content": { "type": "asset", "asset": "gun-shotgun" },
-      "transform": { "position": [0, 2.02, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-shotgun", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "TwoHandsGrabbable": { "rotate": true, "translate": true, "scale": false },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "gun-sniper",
-      "name": "Aster Precision Rifle",
-      "content": { "type": "asset", "asset": "gun-sniper" },
-      "transform": { "position": [1.14, 2.02, -1.9] },
-      "components": {
-        "WorkshopItem": { "itemId": "gun-sniper", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true },
-        "TwoHandsGrabbable": { "rotate": true, "translate": true, "scale": false },
-        "DistanceGrabbable": { "movementMode": "MoveTowardsTarget", "returnToOrigin": true, "scale": false }
-      }
-    },
-    {
-      "id": "accessory-optic",
-      "name": "Prism Optic",
-      "content": { "type": "asset", "asset": "accessory-optic" },
-      "transform": { "position": [-0.4, 0.773, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-optic", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "accessory-suppressor",
-      "name": "Quietline Sleeve",
-      "content": { "type": "asset", "asset": "accessory-suppressor" },
-      "transform": { "position": [-0.24, 0.794, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-suppressor", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "accessory-drum",
-      "name": "Drum Magazine",
-      "content": { "type": "asset", "asset": "accessory-drum" },
-      "transform": { "position": [-0.08, 0.82, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-drum", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "accessory-foregrip",
-      "name": "Stability Foregrip",
-      "content": { "type": "asset", "asset": "accessory-foregrip" },
-      "transform": { "position": [0.08, 0.875, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-foregrip", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "accessory-laser",
-      "name": "Targeting Module",
-      "content": { "type": "asset", "asset": "accessory-laser" },
-      "transform": { "position": [0.24, 0.794, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-laser", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "accessory-brake",
-      "name": "Muzzle Brake",
-      "content": { "type": "asset", "asset": "accessory-brake" },
-      "transform": { "position": [0.4, 0.794, -0.98] },
-      "components": {
-        "WorkshopItem": { "itemId": "accessory-brake", "strippedCount": 0 },
-        "AttachedAccessory": {},
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-torch",
-      "name": "Weld Torch",
-      "content": { "type": "asset", "asset": "tool-torch" },
-      "transform": { "position": [-0.4, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-torch", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-driver",
-      "name": "Precision Driver",
-      "content": { "type": "asset", "asset": "tool-driver" },
-      "transform": { "position": [-0.24, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-driver", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-wrench",
-      "name": "Workshop Wrench",
-      "content": { "type": "asset", "asset": "tool-wrench" },
-      "transform": { "position": [-0.08, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-wrench", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-hammer",
-      "name": "Soft-Face Hammer",
-      "content": { "type": "asset", "asset": "tool-hammer" },
-      "transform": { "position": [0.08, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-hammer", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-pliers",
-      "name": "Grip Pliers",
-      "content": { "type": "asset", "asset": "tool-pliers" },
-      "transform": { "position": [0.24, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-pliers", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "tool-oil-can",
-      "name": "Care Oil",
-      "content": { "type": "asset", "asset": "tool-oil-can" },
-      "transform": { "position": [0.4, 0.79, -0.62], "rotationDeg": [0, 0, 90] },
-      "components": {
-        "WorkshopItem": { "itemId": "tool-oil-can", "strippedCount": 0 },
-        "Interactable": {},
-        "RayInteractable": {},
-        "OneHandGrabbable": { "rotate": true, "translate": true }
-      }
-    },
-    {
-      "id": "workshop-panel",
-      "name": "Gunsmith Reward Card",
-      "content": { "type": "asset", "asset": "workshop-card" },
-      "transform": { "position": [0.25, 1.12, -0.62] },
-      "components": {
-        "RayInteractable": {},
-        "PokeInteractable": {},
-        "WorkshopWallet": { "credits": 250, "xp": 0, "level": 1 }
-      }
+    "transform": {
+      "position": [
+        -0.2,
+        -0.35,
+        -0.15
+      ],
+      "rotationDeg": [
+        -12,
+        0,
+        0
+      ]
     }
-  ]
+  },
+  "resources": {},
+  "units": "meters",
+  "version": "iwsdk.scene.v1"
 }
