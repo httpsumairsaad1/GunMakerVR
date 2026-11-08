@@ -19,6 +19,18 @@ export const WorkshopWallet = createComponent('WorkshopWallet', {
   credits: { type: Types.Int32, default: STARTING_CREDITS },
   xp: { type: Types.Int32, default: 0 },
   level: { type: Types.Int16, default: 1 },
+  score: { type: Types.Int32, default: 0 },
+});
+
+export const InteractionHighlight = createComponent('InteractionHighlight', {
+  state: { type: Types.Int8, default: 0 },
+  pulse: { type: Types.Boolean, default: false },
+});
+
+export const TutorialProgress = createComponent('TutorialProgress', {
+  step: { type: Types.Int8, default: 0 },
+  active: { type: Types.Boolean, default: true },
+  complete: { type: Types.Boolean, default: false },
 });
 
 export const AttachedAccessory = createComponent('AttachedAccessory', {
@@ -28,4 +40,11 @@ export const AttachedAccessory = createComponent('AttachedAccessory', {
   offsetZ: { type: Types.Float32, default: 0 },
 });
 
-export default defineComponents([Interactable, WorkshopItem, WorkshopWallet, AttachedAccessory]);
+export default defineComponents([
+  Interactable,
+  WorkshopItem,
+  WorkshopWallet,
+  InteractionHighlight,
+  TutorialProgress,
+  AttachedAccessory,
+]);

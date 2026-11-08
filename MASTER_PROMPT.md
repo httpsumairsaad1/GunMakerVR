@@ -1,4 +1,4 @@
-# MASTER PROMPT: VRGunMaker
+# MASTER PROMPT: VRGunMaker (paste into Antigravity)
 
 ```
 You are an expert WebXR game developer and technical lead.
@@ -99,6 +99,24 @@ starts a VR session, so it cannot prove hands, controllers, grabbing or head pos
 - Every interactable gets hover and pressed feedback: glow or outline plus sound, fired
   on the same frame (use qualify subscriptions or a proximity system).
 - Skins: a paint station that swaps cosmetic materials; unlock by XP, level or money.
+
+=== INPUT MODES (see GAME_DESIGN.md section 4a) ===
+The emulator's Input setup has Controllers (ray + trigger), Hands (ray, poke + grab) and
+Gaze + Hands (needs eye tracking, e.g. Quest Pro; not on Quest 1-3).
+- Hands is the default. Controllers are a full fallback. Gaze + Hands must fall back to
+  Hands and never crash.
+- Every action must work in BOTH Hands and Controllers. Use the mapping table in section
+  4a (trigger = select and fire, grip = hold, X = radial menu, Y = guide, A = confirm,
+  B = back, thumbstick = menu navigation, no locomotion).
+- Detect the active input source and switch live, including mid-session; a held object must
+  drop or transfer safely.
+- Guide cards and icons show controller glyphs or hand gestures to match the active mode.
+- Add short haptic pulses on controllers (snap, weld, fire, level-up) if the actuator is
+  available; verify first.
+- Test every interaction step in both Hands and Controllers in the emulator and report
+  both results.
+- Record the verified emulator keys (stick W/A/S/D, Trig Q, Grip E, X/Y buttons) in
+  GAME_DESIGN.md section 12.
 
 === SEATED REACH RULE ===
 Everything the player must touch is inside a 0.6 m arc. Far items use distance grab.

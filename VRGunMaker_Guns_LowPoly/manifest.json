@@ -1,0 +1,1090 @@
+{
+  "pack": "VRGunMaker low-poly modular guns",
+  "units": "metres",
+  "up_axis": "Y",
+  "forward_axis": "-Z (muzzle points toward -Z)",
+  "origin_rule": "Every part GLB has its origin at its own attach point. The assembled GLB places each part node at that point.",
+  "guns": [
+    {
+      "id": "bolt_sniper",
+      "name": "Bolt Sniper",
+      "assembled": "bolt_sniper/bolt_sniper_assembled.glb",
+      "assembly_order": [
+        "receiver",
+        "stock",
+        "handguard",
+        "barrel",
+        "magazine",
+        "bolt",
+        "scope"
+      ],
+      "parts": [
+        {
+          "id": "receiver",
+          "name": "Receiver",
+          "slot": "receiver",
+          "file": "bolt_sniper/parts/bolt_sniper_receiver.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.0,
+          "triangles": 308,
+          "size_m": [
+            0.048,
+            0.158,
+            0.27
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "barrel",
+          "name": "Barrel",
+          "slot": "barrel",
+          "file": "bolt_sniper/parts/bolt_sniper_barrel.glb",
+          "attach_position": [
+            0.0,
+            0.016,
+            -0.14
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.16,
+          "triangles": 328,
+          "size_m": [
+            0.033,
+            0.033,
+            0.401
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "handguard",
+          "name": "Wood Handguard",
+          "slot": "handguard",
+          "file": "bolt_sniper/parts/bolt_sniper_handguard.glb",
+          "attach_position": [
+            0.0,
+            -0.01,
+            -0.14
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 80,
+          "size_m": [
+            0.041,
+            0.062,
+            0.28
+          ],
+          "materials": [
+            "dark_steel",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "stock",
+          "name": "Wood Stock",
+          "slot": "stock",
+          "file": "bolt_sniper/parts/bolt_sniper_stock.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            0.13
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "detach_distance": 0.14,
+          "triangles": 68,
+          "size_m": [
+            0.039,
+            0.183,
+            0.355
+          ],
+          "materials": [
+            "dark_steel",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "magazine",
+          "name": "Box Magazine",
+          "slot": "magazine",
+          "file": "bolt_sniper/parts/bolt_sniper_magazine.glb",
+          "attach_position": [
+            0.0,
+            -0.044,
+            -0.065
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.1,
+          "triangles": 24,
+          "size_m": [
+            0.027,
+            0.04,
+            0.066
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "scope",
+          "name": "Scope",
+          "slot": "sight",
+          "file": "bolt_sniper/parts/bolt_sniper_scope.glb",
+          "attach_position": [
+            0.0,
+            0.06,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.1,
+          "triangles": 480,
+          "size_m": [
+            0.052,
+            0.06,
+            0.342
+          ],
+          "materials": [
+            "dark_steel",
+            "glass",
+            "steel"
+          ]
+        },
+        {
+          "id": "bolt",
+          "name": "Bolt Handle",
+          "slot": "bolt",
+          "file": "bolt_sniper/parts/bolt_sniper_bolt.glb",
+          "attach_position": [
+            0.022,
+            0.02,
+            0.06
+          ],
+          "detach_direction": [
+            1.0,
+            0.0,
+            -0.0
+          ],
+          "detach_distance": 0.08,
+          "triangles": 128,
+          "size_m": [
+            0.064,
+            0.045,
+            0.049
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        }
+      ],
+      "triangles_total": 1416,
+      "length_m": 1.016,
+      "height_m": 0.241,
+      "anchors": {
+        "grip_anchor": [
+          0.0,
+          -0.075,
+          0.19
+        ],
+        "support_anchor": [
+          0.0,
+          -0.03,
+          -0.28
+        ],
+        "muzzle": [
+          0.0,
+          0.016,
+          -0.54
+        ]
+      }
+    },
+    {
+      "id": "drum_shotgun",
+      "name": "Drum Pump Shotgun",
+      "assembled": "drum_shotgun/drum_shotgun_assembled.glb",
+      "assembly_order": [
+        "receiver",
+        "stock",
+        "barrel_shroud",
+        "pump_forend",
+        "drum_magazine",
+        "front_sight"
+      ],
+      "parts": [
+        {
+          "id": "receiver",
+          "name": "Receiver",
+          "slot": "receiver",
+          "file": "drum_shotgun/parts/drum_shotgun_receiver.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.0,
+          "triangles": 248,
+          "size_m": [
+            0.052,
+            0.148,
+            0.27
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "barrel_shroud",
+          "name": "Perforated Barrel",
+          "slot": "barrel",
+          "file": "drum_shotgun/parts/drum_shotgun_barrel_shroud.glb",
+          "attach_position": [
+            0.0,
+            0.02,
+            -0.1
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.16,
+          "triangles": 476,
+          "size_m": [
+            0.047,
+            0.07,
+            0.326
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "pump_forend",
+          "name": "Pump Forend",
+          "slot": "handguard",
+          "file": "drum_shotgun/parts/drum_shotgun_pump_forend.glb",
+          "attach_position": [
+            0.0,
+            -0.03,
+            -0.115
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 156,
+          "size_m": [
+            0.045,
+            0.066,
+            0.16
+          ],
+          "materials": [
+            "dark",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "drum_magazine",
+          "name": "Drum Magazine",
+          "slot": "magazine",
+          "file": "drum_shotgun/parts/drum_shotgun_drum_magazine.glb",
+          "attach_position": [
+            0.0,
+            -0.085,
+            -0.33
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.11,
+          "triangles": 532,
+          "size_m": [
+            0.08,
+            0.145,
+            0.143
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "stock",
+          "name": "Wood Stock",
+          "slot": "stock",
+          "file": "drum_shotgun/parts/drum_shotgun_stock.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            0.14
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "detach_distance": 0.14,
+          "triangles": 68,
+          "size_m": [
+            0.043,
+            0.193,
+            0.383
+          ],
+          "materials": [
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "front_sight",
+          "name": "Front Sight",
+          "slot": "sight",
+          "file": "drum_shotgun/parts/drum_shotgun_front_sight.glb",
+          "attach_position": [
+            0.0,
+            0.04,
+            -0.41
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.08,
+          "triangles": 48,
+          "size_m": [
+            0.026,
+            0.027,
+            0.028
+          ],
+          "materials": [
+            "steel"
+          ]
+        }
+      ],
+      "triangles_total": 1528,
+      "length_m": 0.934,
+      "height_m": 0.229,
+      "anchors": {
+        "grip_anchor": [
+          0.0,
+          -0.075,
+          0.205
+        ],
+        "support_anchor": [
+          0.0,
+          -0.045,
+          -0.19
+        ],
+        "muzzle": [
+          0.0,
+          0.022,
+          -0.4262
+        ]
+      }
+    },
+    {
+      "id": "assault_rifle",
+      "name": "Assault Rifle",
+      "assembled": "assault_rifle/assault_rifle_assembled.glb",
+      "assembly_order": [
+        "receiver",
+        "stock",
+        "grip",
+        "barrel",
+        "handguard",
+        "magazine",
+        "rear_sight"
+      ],
+      "parts": [
+        {
+          "id": "receiver",
+          "name": "Receiver",
+          "slot": "receiver",
+          "file": "assault_rifle/parts/assault_rifle_receiver.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.0,
+          "triangles": 444,
+          "size_m": [
+            0.068,
+            0.163,
+            0.26
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "barrel",
+          "name": "Barrel + Flash Hider",
+          "slot": "barrel",
+          "file": "assault_rifle/parts/assault_rifle_barrel.glb",
+          "attach_position": [
+            0.0,
+            0.022,
+            -0.14
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.16,
+          "triangles": 212,
+          "size_m": [
+            0.026,
+            0.068,
+            0.321
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "handguard",
+          "name": "Vented Handguard",
+          "slot": "handguard",
+          "file": "assault_rifle/parts/assault_rifle_handguard.glb",
+          "attach_position": [
+            0.0,
+            0.022,
+            -0.14
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 436,
+          "size_m": [
+            0.041,
+            0.084,
+            0.172
+          ],
+          "materials": [
+            "dark",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "magazine",
+          "name": "Curved Magazine",
+          "slot": "magazine",
+          "file": "assault_rifle/parts/assault_rifle_magazine.glb",
+          "attach_position": [
+            0.0,
+            -0.04,
+            -0.06
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.12,
+          "triangles": 92,
+          "size_m": [
+            0.026,
+            0.167,
+            0.101
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "stock",
+          "name": "Wood Stock",
+          "slot": "stock",
+          "file": "assault_rifle/parts/assault_rifle_stock.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            0.12
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "detach_distance": 0.14,
+          "triangles": 64,
+          "size_m": [
+            0.037,
+            0.128,
+            0.298
+          ],
+          "materials": [
+            "dark",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "grip",
+          "name": "Pistol Grip",
+          "slot": "grip",
+          "file": "assault_rifle/parts/assault_rifle_grip.glb",
+          "attach_position": [
+            0.0,
+            -0.04,
+            0.09
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 36,
+          "size_m": [
+            0.029,
+            0.108,
+            0.088
+          ],
+          "materials": [
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "rear_sight",
+          "name": "Rear Sight",
+          "slot": "sight",
+          "file": "assault_rifle/parts/assault_rifle_rear_sight.glb",
+          "attach_position": [
+            0.0,
+            0.06,
+            0.025
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.07,
+          "triangles": 36,
+          "size_m": [
+            0.02,
+            0.025,
+            0.04
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        }
+      ],
+      "triangles_total": 1320,
+      "length_m": 0.879,
+      "height_m": 0.29,
+      "anchors": {
+        "grip_anchor": [
+          0.0,
+          -0.095,
+          0.115
+        ],
+        "support_anchor": [
+          0.0,
+          -0.015,
+          -0.23
+        ],
+        "muzzle": [
+          0.0,
+          0.022,
+          -0.4612
+        ]
+      }
+    },
+    {
+      "id": "grenade_launcher",
+      "name": "Revolver Grenade Launcher",
+      "assembled": "grenade_launcher/grenade_launcher_assembled.glb",
+      "assembly_order": [
+        "receiver",
+        "stock",
+        "cylinder",
+        "barrel",
+        "forend",
+        "sight"
+      ],
+      "parts": [
+        {
+          "id": "receiver",
+          "name": "Frame",
+          "slot": "receiver",
+          "file": "grenade_launcher/parts/grenade_launcher_receiver.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.0,
+          "triangles": 212,
+          "size_m": [
+            0.056,
+            0.165,
+            0.33
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "cylinder",
+          "name": "Revolver Cylinder",
+          "slot": "cylinder",
+          "file": "grenade_launcher/parts/grenade_launcher_cylinder.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.14
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.12,
+          "triangles": 608,
+          "size_m": [
+            0.108,
+            0.114,
+            0.118
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "barrel",
+          "name": "Wide Barrel",
+          "slot": "barrel",
+          "file": "grenade_launcher/parts/grenade_launcher_barrel.glb",
+          "attach_position": [
+            0.0,
+            0.012,
+            -0.2
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.16,
+          "triangles": 272,
+          "size_m": [
+            0.078,
+            0.08,
+            0.221
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "forend",
+          "name": "Wood Forend",
+          "slot": "handguard",
+          "file": "grenade_launcher/parts/grenade_launcher_forend.glb",
+          "attach_position": [
+            0.0,
+            -0.036,
+            -0.2
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.1,
+          "triangles": 192,
+          "size_m": [
+            0.05,
+            0.06,
+            0.175
+          ],
+          "materials": [
+            "dark",
+            "wood"
+          ]
+        },
+        {
+          "id": "stock",
+          "name": "Wood Stock",
+          "slot": "stock",
+          "file": "grenade_launcher/parts/grenade_launcher_stock.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            0.1
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "detach_distance": 0.14,
+          "triangles": 64,
+          "size_m": [
+            0.045,
+            0.193,
+            0.285
+          ],
+          "materials": [
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "sight",
+          "name": "Flip-up Ladder Sight",
+          "slot": "sight",
+          "file": "grenade_launcher/parts/grenade_launcher_sight.glb",
+          "attach_position": [
+            0.0,
+            0.044,
+            -0.345
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.08,
+          "triangles": 84,
+          "size_m": [
+            0.026,
+            0.075,
+            0.034
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        }
+      ],
+      "triangles_total": 1432,
+      "length_m": 0.806,
+      "height_m": 0.241,
+      "anchors": {
+        "grip_anchor": [
+          0.0,
+          -0.085,
+          0.18
+        ],
+        "support_anchor": [
+          0.0,
+          -0.05,
+          -0.28
+        ],
+        "muzzle": [
+          0.0,
+          0.012,
+          -0.4212
+        ]
+      }
+    },
+    {
+      "id": "drum_pistol",
+      "name": "Drum Pistol",
+      "assembled": "drum_pistol/drum_pistol_assembled.glb",
+      "assembly_order": [
+        "frame",
+        "grip",
+        "slide",
+        "barrel",
+        "forend",
+        "drum",
+        "rear_sight"
+      ],
+      "parts": [
+        {
+          "id": "frame",
+          "name": "Frame",
+          "slot": "receiver",
+          "file": "drum_pistol/parts/drum_pistol_frame.glb",
+          "attach_position": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.0,
+          "triangles": 68,
+          "size_m": [
+            0.029,
+            0.067,
+            0.17
+          ],
+          "materials": [
+            "dark",
+            "steel"
+          ]
+        },
+        {
+          "id": "slide",
+          "name": "Slide",
+          "slot": "slide",
+          "file": "drum_pistol/parts/drum_pistol_slide.glb",
+          "attach_position": [
+            0.0,
+            0.02,
+            -0.0
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 204,
+          "size_m": [
+            0.037,
+            0.055,
+            0.282
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "barrel",
+          "name": "Muzzle",
+          "slot": "barrel",
+          "file": "drum_pistol/parts/drum_pistol_barrel.glb",
+          "attach_position": [
+            0.0,
+            0.024,
+            -0.19
+          ],
+          "detach_direction": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "detach_distance": 0.12,
+          "triangles": 112,
+          "size_m": [
+            0.026,
+            0.027,
+            0.047
+          ],
+          "materials": [
+            "dark",
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "forend",
+          "name": "Grooved Forend",
+          "slot": "handguard",
+          "file": "drum_pistol/parts/drum_pistol_forend.glb",
+          "attach_position": [
+            0.0,
+            -0.01,
+            -0.11
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.07,
+          "triangles": 144,
+          "size_m": [
+            0.035,
+            0.042,
+            0.1
+          ],
+          "materials": [
+            "dark",
+            "wood"
+          ]
+        },
+        {
+          "id": "drum",
+          "name": "Drum Magazine",
+          "slot": "magazine",
+          "file": "drum_pistol/parts/drum_pistol_drum.glb",
+          "attach_position": [
+            0.0,
+            -0.075,
+            -0.15
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.09,
+          "triangles": 372,
+          "size_m": [
+            0.044,
+            0.092,
+            0.092
+          ],
+          "materials": [
+            "dark_steel",
+            "steel"
+          ]
+        },
+        {
+          "id": "grip",
+          "name": "Wood Grip",
+          "slot": "grip",
+          "file": "drum_pistol/parts/drum_pistol_grip.glb",
+          "attach_position": [
+            0.0,
+            -0.025,
+            0.055
+          ],
+          "detach_direction": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "detach_distance": 0.08,
+          "triangles": 104,
+          "size_m": [
+            0.031,
+            0.101,
+            0.085
+          ],
+          "materials": [
+            "dark",
+            "steel",
+            "wood"
+          ]
+        },
+        {
+          "id": "rear_sight",
+          "name": "Rear Sight",
+          "slot": "sight",
+          "file": "drum_pistol/parts/drum_pistol_rear_sight.glb",
+          "attach_position": [
+            0.0,
+            0.046,
+            0.058
+          ],
+          "detach_direction": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "detach_distance": 0.06,
+          "triangles": 36,
+          "size_m": [
+            0.022,
+            0.014,
+            0.022
+          ],
+          "materials": [
+            "steel"
+          ]
+        }
+      ],
+      "triangles_total": 1040,
+      "length_m": 0.329,
+      "height_m": 0.183,
+      "anchors": {
+        "grip_anchor": [
+          0.0,
+          -0.075,
+          0.045
+        ],
+        "muzzle": [
+          0.0,
+          0.024,
+          -0.2372
+        ]
+      }
+    }
+  ]
+}

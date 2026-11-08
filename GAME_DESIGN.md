@@ -50,6 +50,35 @@ You are a master gunsmith. Build guns from modular parts, **weld** them, test th
 
 Agent must verify with the IWSDK reference tools which hand gesture the grab pointer uses, and record the result here under "Verified interaction notes". Hand input quality varies by device (Quest 1 lowest, Quest 3 best), so use forgiving tolerances and test the weld and snap mechanics on the lowest device available. Hover and pressed states must always give visual (outline or glow) and audio feedback.
 
+## 4a. Input modes and controller mapping
+The IWSDK emulator's **Input setup** offers three modes. Support them like this:
+| Mode | What it is | Our support |
+|---|---|---|
+| Hands | Ray, poke and grab | **Default and primary** (hands-first for the competition) |
+| Controllers | Ray + trigger | **Full fallback**, required. Quest 1 hand tracking is weaker, and it is the easiest way to test |
+| Gaze + Hands | Look, then pinch; needs an eye-tracking profile such as Meta Quest Pro | **Not supported on Quest 1-3** (they have no eye tracking). Fall back to Hands. Must never crash or break |
+
+**Controller mapping (proposal; keep every action reachable in both modes):**
+| Action | Controllers | Hands |
+|---|---|---|
+| Select / press UI | Ray + trigger | Ray pinch, or poke with index finger |
+| Grab small part or tool | Trigger (near) | Pinch |
+| Hold a gun or large part | Grip button | Full-hand grab |
+| Pull a far item in | Ray + trigger (DistanceGrabbable) | Ray + pinch |
+| Fire | Trigger while holding a gun | Index-curl, or off-hand pinch |
+| Two-hand steady | Grip on both hands | Grab with both hands |
+| Open / close radial menu | Left X button | Palm-up gesture or a menu pad on the bench |
+| Open guide / help card | Left Y button | "?" pad on the bench |
+| Confirm / context action (inspect, reload) | Right A button | Pinch on the action prompt |
+| Back / cancel / return item to bin | Right B button | "Back" slice or bin pad |
+| Menu navigation, scroll the shop carousel | Thumbstick (no locomotion, seated) | Pinch-swipe |
+- **Emulator keys** (from its on-screen keypad): stick = W/A/S/D, Trig = Q, Grip = E, plus X and Y buttons. Verify the exact keys in the emulator and record them in section 12.
+- **Auto-detect the active input** (hand vs controller input sources) and switch on the fly, including mid-session when the player puts controllers down. A held object must be dropped or handed over safely, never stuck.
+- **Prompts adapt:** guide cards, tutorial icons and menu hints show controller button glyphs or hand gesture icons depending on the active mode.
+- **Haptics (controllers):** short pulses on snap, weld contact, fire and level-up, via the gamepad haptic actuator if available (verify). Hands get visual and audio feedback only.
+- **Controllers need grab tolerance too:** use the same generous snap and reach rules.
+- Test **both Hands and Controllers** in the emulator for every interaction step, and confirm switching to Gaze + Hands does not crash.
+
 ## 5. Reach rule (resolves bench size vs seat test)
 The bench is visually large (about 1.6 m wide), but **everything the player must touch lives in a 0.6 m arc**. Far items (wall rack, back shelf, safe) are brought in with `DistanceGrabbable`. The shop is a pinch-swipeable card carousel, not a far shelf. Anything dropped or out of reach returns to its bin automatically.
 
