@@ -24,6 +24,11 @@ function gltfAsset(path: string) {
   return { url, type: AssetType.GLTF };
 }
 
+const uiPanel = (name: string) => ({
+  url: `${import.meta.env.BASE_URL}ui/${name}.uikitml`,
+  type: AssetType.UIKitML,
+});
+
 const gunAssets = Object.fromEntries(
   gunPack.guns.flatMap((gun) => {
     const gunId = gun.id.replace(/_/g, '-');
@@ -42,8 +47,10 @@ export default defineAssets({
   workbench: createWorkbench(),
   'gun-wall': createGunWall(),
   ...gunAssets,
-  'workshop-card': {
-    url: `${import.meta.env.BASE_URL}ui/workshop-card.uikitml`,
-    type: AssetType.UIKitML,
-  },
+  // Spatial UI panels (public/ui/*.uikitml)
+  'workshop-card': uiPanel('workshop-card'),
+  'menu-panel': uiPanel('menu-panel'),
+  'guide-panel': uiPanel('guide-panel'),
+  'stats-panel': uiPanel('stats-panel'),
+  'help-panel': uiPanel('help-panel'),
 });

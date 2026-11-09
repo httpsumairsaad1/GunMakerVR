@@ -17,23 +17,18 @@
       }
     },
     "input": {
-      "canvasPointerEvents": true
+      "canvasPointerEvents": {
+        "enabled": true,
+        "activeDuringXR": true
+      }
     },
     "render": {
       "fov": 70,
       "near": 0.001,
       "far": 200,
       "camera": {
-        "position": [
-          0,
-        2,
-          0.5
-        ],
-        "lookAt": [
-          0,
-          0.72,
-          -0.8
-        ]
+        "position": [0, 1.05, -0.2],
+        "lookAt": [0, 0.8, -0.8]
       }
     },
     "features": {

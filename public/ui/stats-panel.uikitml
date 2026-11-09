@@ -1,0 +1,36 @@
+<meta preferred-color-scheme="dark" />
+<style>
+  .card { width: 40; height: 46; flex-direction: column; gap: 1.1; padding: 2; background-color: rgba(6, 16, 26, 0.92); border-color: #2fc8ff; border-width: 0.25; border-radius: 1.6; }
+  .title { font-size: 2.8; font-weight: 700; color: #ffb04a; }
+  .sub { font-size: 2; font-weight: 700; color: #7fd8ff; }
+  .lab { width: 36; flex-direction: row; justify-content: space-between; }
+  .l { font-size: 1.8; color: #b9c9d4; }
+  .v { font-size: 1.8; font-weight: 700; color: #ffffff; }
+  .track { width: 36; height: 1.2; background-color: #12303f; border-radius: 0.6; }
+  .fill { width: 0; height: 1.2; background-color: #2fc8ff; border-radius: 0.6; }
+  .note { font-size: 1.9; color: #3dff8f; }
+  .btn { width: 36; height: 5.2; background-color: rgba(47, 200, 255, 0.14); border-color: #2fc8ff; border-width: 0.25; border-radius: 1.2; font-size: 2; font-weight: 700; color: #dff4ff; }
+  .btn:hover { background-color: rgba(47, 200, 255, 0.4); }
+  .sell { border-color: #ff4d5e; background-color: rgba(255, 77, 94, 0.14); }
+  .sell:hover { background-color: rgba(255, 77, 94, 0.4); }
+</style>
+<Panel width="40" height="46">
+  <div class="card">
+    <span id="sp-title" class="title">BLUEPRINT</span>
+    <span id="sp-sub" class="sub">Select a gun to see its stats</span>
+    <div class="lab"><span class="l">DAMAGE</span><span id="sb-1-val" class="v">0</span></div>
+    <div class="track"><div id="sb-1" class="fill"></div></div>
+    <div class="lab"><span class="l">ACCURACY</span><span id="sb-2-val" class="v">0</span></div>
+    <div class="track"><div id="sb-2" class="fill"></div></div>
+    <div class="lab"><span class="l">FIRE RATE</span><span id="sb-3-val" class="v">0</span></div>
+    <div class="track"><div id="sb-3" class="fill"></div></div>
+    <div class="lab"><span class="l">RECOIL</span><span id="sb-4-val" class="v">0</span></div>
+    <div class="track"><div id="sb-4" class="fill"></div></div>
+    <div class="lab"><span class="l">MAGAZINE</span><span id="sb-5-val" class="v">0</span></div>
+    <div class="track"><div id="sb-5" class="fill"></div></div>
+    <span id="sp-note" class="note"> </span>
+    <button id="sp-build" class="btn">BUILD THIS</button>
+    <button id="sp-store" class="btn">STORE IN SAFE</button>
+    <button id="sp-sell" class="btn sell">SELL</button>
+  </div>
+</Panel>

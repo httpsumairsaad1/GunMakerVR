@@ -5,15 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { defineComponents, createComponent, Types } from '@iwsdk/core';
+import {
+  defineComponents,
+  createComponent,
+  RayInteractable,
+  Interactable,
+  Types,
+} from '@iwsdk/core';
 import { STARTING_CREDITS } from './data/workshop-items.js';
+
+export { RayInteractable, Interactable };
 
 export const WorkshopItem = createComponent('WorkshopItem', {
   itemId: { type: Types.String, default: '' },
   strippedCount: { type: Types.Int8, default: 0 },
 });
-
-export const Interactable = createComponent('Interactable', {});
 
 export const WorkshopWallet = createComponent('WorkshopWallet', {
   credits: { type: Types.Int32, default: STARTING_CREDITS },
@@ -43,7 +49,6 @@ export const TutorialProgress = createComponent('TutorialProgress', {
 });
 
 export default defineComponents([
-  Interactable,
   WorkshopItem,
   WorkshopWallet,
   InteractionHighlight,

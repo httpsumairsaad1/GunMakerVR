@@ -1,0 +1,91 @@
+<meta preferred-color-scheme="dark" />
+<style>
+  .shell { width: 90; height: 52; flex-direction: row; gap: 2; padding: 2.2; background-color: rgba(6, 16, 26, 0.94); border-color: #2fc8ff; border-width: 0.3; border-radius: 1.8; }
+  .nav { width: 24; height: 47.6; flex-direction: column; gap: 1.6; }
+  .nav-title { font-size: 2.2; font-weight: 700; color: #ffb04a; }
+  .nb { width: 24; height: 7; background-color: rgba(47, 200, 255, 0.1); border-color: #1e6f8f; border-width: 0.2; border-radius: 1.2; font-size: 2.3; font-weight: 700; color: #dff4ff; }
+  .nb:hover { background-color: rgba(47, 200, 255, 0.4); }
+  .go { background-color: rgba(61, 255, 143, 0.18); border-color: #3dff8f; }
+  .page { width: 60; height: 47.6; flex-direction: column; gap: 1.6; }
+  .h1 { font-size: 3.4; font-weight: 700; color: #ffffff; }
+  .h2 { font-size: 2.4; font-weight: 700; color: #7fd8ff; }
+  .t { font-size: 2; color: #c9d7e0; }
+  .tg { font-size: 2.1; font-weight: 700; color: #3dff8f; }
+  .steps { width: 60; flex-direction: row; gap: 1.5; }
+  .step { width: 19; height: 11; flex-direction: column; padding: 1; background-color: rgba(47, 200, 255, 0.08); border-color: #1e6f8f; border-width: 0.2; border-radius: 1; }
+  .sn { font-size: 2.1; font-weight: 700; color: #ffffff; }
+  .ss { font-size: 1.7; color: #9fb4c2; }
+  .cols { width: 60; flex-direction: row; gap: 2; }
+  .col { width: 29; flex-direction: column; gap: 1.2; }
+  .bp { width: 29; height: 6.6; background-color: rgba(47, 200, 255, 0.08); border-color: #1e6f8f; border-width: 0.2; border-radius: 1.1; font-size: 2; font-weight: 700; color: #dff4ff; }
+  .bp:hover { background-color: rgba(47, 200, 255, 0.35); }
+  .act { width: 29; height: 6.4; background-color: rgba(61, 255, 143, 0.16); border-color: #3dff8f; border-width: 0.25; border-radius: 1.3; font-size: 2.1; font-weight: 700; color: #eafff3; }
+  .act:hover { background-color: rgba(61, 255, 143, 0.4); }
+  .alt { background-color: rgba(255, 176, 74, 0.14); border-color: #ffb04a; }
+  .alt:hover { background-color: rgba(255, 176, 74, 0.4); }
+  .track { width: 56; height: 1.4; background-color: #12303f; border-radius: 0.7; }
+  .fill { width: 0; height: 1.4; background-color: #2fc8ff; border-radius: 0.7; }
+</style>
+<Panel width="90" height="52">
+  <div class="shell">
+    <div class="nav">
+      <span class="nav-title">GUNMAKERVR</span>
+      <button id="nav-start" class="nb go">START ASSEMBLY</button>
+      <button id="nav-guide" class="nb">GUIDE</button>
+      <button id="nav-stats" class="nb">STATS</button>
+      <button id="nav-settings" class="nb">SETTINGS</button>
+      <button id="nav-exit" class="nb">RESUME</button>
+    </div>
+    <div class="page">
+      <div id="page-guide" class="page">
+        <span class="h1">GUIDE</span>
+        <span class="h2">WELCOME TO GUNMAKERVR</span>
+        <div class="steps">
+          <div class="step"><span class="sn">1. SELECT PART</span><span class="ss">Point or pinch a wall gun or a bench part.</span></div>
+          <div class="step"><span class="sn">2. PLACE ON BENCH</span><span class="ss">Bring it to the glowing slot, then release.</span></div>
+          <div class="step"><span class="sn">3. STORE OR SELL</span><span class="ss">Finish the build for XP and credits.</span></div>
+        </div>
+        <span class="h2">CONTROLS CHEATSHEET</span>
+        <span class="t">Select: pinch / trigger / click     Hold: grab / grip</span>
+        <span class="t">Menu: Left X or M     Wheel: Left Y or B     Hint: Right A or H</span>
+        <span class="t">Remove last part: Right B or T     Blueprints: keys 1 to 5</span>
+        <span class="tg" id="guide-note">First time here? Press START ASSEMBLY for the tutorial.</span>
+      </div>
+      <div id="page-bp" class="page" style="display: none">
+        <span class="h1">GUNSMITH WORKSHOP</span>
+        <span id="bp-wallet" class="h2">Credits: 250 | XP: 0</span>
+        <div class="cols">
+          <div class="col">
+            <button id="bp-1" class="bp">1. BLUEPRINT</button>
+            <button id="bp-2" class="bp">2. BLUEPRINT</button>
+            <button id="bp-3" class="bp">3. BLUEPRINT</button>
+            <button id="bp-4" class="bp">4. BLUEPRINT</button>
+            <button id="bp-5" class="bp">5. BLUEPRINT</button>
+          </div>
+          <div class="col">
+            <span id="bp-name" class="h2">Choose a gun</span>
+            <span id="bp-stats" class="t">Select a blueprint to see its stats.</span>
+            <span id="bp-note" class="t">Locked blueprints need a higher level.</span>
+            <button id="bp-confirm" class="act">CONFIRM SELECTION</button>
+            <button id="bp-tutorial" class="act alt">TUTORIAL DEMO</button>
+          </div>
+        </div>
+      </div>
+      <div id="page-stats" class="page" style="display: none">
+        <span class="h1">STATS</span>
+        <span id="st-line1" class="h2">250 credits | Level 1</span>
+        <div class="track"><div id="st-xp-fill" class="fill"></div></div>
+        <span id="st-line2" class="t">0 XP | 0 score | 0 builds</span>
+        <span class="h2">SAFE COLLECTION</span>
+        <span id="st-collection" class="t">Nothing stored yet.</span>
+      </div>
+      <div id="page-settings" class="page" style="display: none">
+        <span class="h1">SETTINGS</span>
+        <button id="set-sound" class="act">SOUND: ON</button>
+        <button id="set-holo" class="act">HOLOGRAM HINTS: ON</button>
+        <button id="set-reset" class="act alt">RESET PROGRESS</button>
+        <span id="set-note" class="t">Saved on this device only.</span>
+      </div>
+    </div>
+  </div>
+</Panel>

@@ -1,0 +1,23 @@
+<meta preferred-color-scheme="dark" />
+<style>
+  .card { width: 40; height: 36; flex-direction: column; gap: 1.2; padding: 2; background-color: rgba(6, 16, 26, 0.9); border-color: #2fc8ff; border-width: 0.25; border-radius: 1.6; }
+  .title { font-size: 2.6; font-weight: 700; color: #ffb04a; }
+  .h { font-size: 2; font-weight: 700; color: #7fd8ff; }
+  .t { font-size: 1.8; color: #c9d7e0; }
+</style>
+<Panel width="40" height="36">
+  <div class="card">
+    <span class="title">HELP STATION</span>
+    <span class="h">HANDS</span>
+    <span class="t">Pinch: select / pick up small parts</span>
+    <span class="t">Grab: hold guns and big parts</span>
+    <span class="t">Release a part at its glowing slot to snap</span>
+    <span class="h">CONTROLLERS</span>
+    <span class="t">Trigger: select    Grip: hold</span>
+    <span class="t">Left X menu | Left Y wheel</span>
+    <span class="t">Right A hint | Right B remove part</span>
+    <span class="h">DESKTOP</span>
+    <span class="t">Click to select, hold to carry, wheel = distance</span>
+    <span class="t">M menu | B wheel | H hint | T remove | 1-5 guns</span>
+  </div>
+</Panel>
