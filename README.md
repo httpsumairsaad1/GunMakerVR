@@ -1,362 +1,149 @@
+<div align="center">
+
 # 🔫 GunMaker3D — VR Gunsmith Simulator
 
-<p align="center">
-  <b>Build. Weld. Customize. Test. Collect.</b>
-  <br />
-  A hands-first VR gunsmith experience powered by IWSDK and WebXR.
-</p>
+<b>Build. Weld. Customize. Test. Collect.</b><br />
+<i>A hands-first VR gunsmith experience powered by IWSDK and WebXR.</i>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Platform-Meta%20Quest-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Experience-VR%20Only-purple?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Input-Hand%20Tracking-green?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Engine-IWSDK-black?style=for-the-badge" />
-</p>
+<br />
+
+[![Platform](https://img.shields.io/badge/Platform-Meta%20Quest%203-blue?style=for-the-badge&logo=meta)](https://developer.meta.com/)
+[![Experience](https://img.shields.io/badge/Experience-VR%20Only-purple?style=for-the-badge)](https://webxr.info/)
+[![Input](https://img.shields.io/badge/Input-Hand%20Tracking-green?style=for-the-badge)](https://developer.meta.com/)
+[![Engine](https://img.shields.io/badge/Engine-IWSDK-black?style=for-the-badge)](https://iwsdk.dev/)
+
+<br />
+
+| Workshop UI & Assembly | Radial Menu Selection |
+| :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/eca59b07-1ed0-498e-a51c-d2170e729a8d" width="100%" alt="GunMaker3D Workshop UI" /> | <img src="https://github.com/user-attachments/assets/09a15069-9f78-4b3f-bc45-6395309abaad" width="100%" alt="Radial Weapon Menu" /> |
+
+| Workbench Assembly View | Left Equipment Wall | Modular Weapons Library |
+| :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/79e318ef-ebd5-4b4d-858f-6ad205e40e4e" width="100%" alt="Assembly View" /> | <img src="https://github.com/user-attachments/assets/25598566-4f67-48ee-9684-5fd4c41df962" width="100%" alt="Equipment Wall" /> | <img src="https://github.com/user-attachments/assets/06aa68fc-5b89-46a1-8b05-87c3c3a45b8e" width="100%" alt="Weapons Preview" /> |
+
+</div>
 
 ---
 
 ## 🎮 About the Game
 
-**GunMaker3D** is an immersive VR gunsmith simulator where players become master gunsmiths.
+**GunMaker3D** is an immersive, seated-optimized VR gunsmith simulator designed specifically for Meta Quest devices[cite: 14]. Players take on the role of a master gunsmith, building firearms from modular components, welding seams, inspecting parts, and testing creations at an interactive shooting range.
 
-Build firearms from modular components, connect parts, weld mechanical seams, repair damaged weapons, and test your creations at an interactive shooting range.
+Every interaction is engineered around natural **controller-free hand tracking** and **diegetic spatial 3D UI**, maximizing physical immersion without complex walls of text.
 
-Earn coins and XP, unlock new components and skins, complete customer orders, and build your personal collection of five signature firearms.
+> **Your workshop. Your craftsmanship. Your collection.**
 
-Every interaction is designed around natural hand tracking, making the experience accessible without requiring physical controllers.
+---
 
-**Your workshop. Your craftsmanship. Your collection.**
+## ⚙️ Architecture & Execution Pipeline
 
-## 🖼️ Game Preview
+The architecture strictly follows the **Entity Component System (ECS)** design pattern powered by Meta's Immersive Web SDK (IWSDK) and Havok Physics for WebXR.
 
-> Screenshots and UI previews will be added as development progresses.
+<img width="1036" height="1440" alt="image" src="https://github.com/user-attachments/assets/aefda436-5b39-47b3-8e18-cd1a615208b7" />
 
-<!-- Replace the placeholders with your actual screenshots -->
 
-<p align="center">
-  <img src="docs/images/workshop-preview.png" width="90%" alt="GunMaker3D Workshop Preview" />
-</p>
+### 1. Seated Calibration Phase (Airplane Seat Test)
+- **Palm Surface Gesture:** Player places both palms flat on the physical desk for 4–5 seconds.
+- **Radial Accumulation:** Glowing calibration rings expand and merge across the surface.
+- **Workspace Anchoring:** Spawns the main workbench at `(0, 0.75, -0.5)` and the left wall rack within a strict **0.6m (2-foot)** interactive radius.
 
-<p align="center">
-  <i>Main Workshop — Interactive 3D Gunsmith Environment</i>
-</p>
-
-### Interface & Gameplay Screenshots
-
-| Workshop | Weapon Assembly |
-|:---:|:---:|
-| ![Workshop](docs/images/workshop.png) | ![Assembly](docs/images/assembly.png) |
-| **Weld Forge** | **Shooting Range** |
-| ![Welding](docs/images/welding.png) | ![Range](docs/images/range.png) |
-| **Weapon Collection** | **Progression System** |
-| ![Safe](docs/images/safe.png) | ![Progression](docs/images/progression.png) |
-
-*Image paths are placeholders. Add your screenshots to `docs/images/` using these filenames.*
+### 2. ECS System Runtime Loop
+- **XR Input & Tracking System:** Computes real-time hand joint transforms, pinch gestures, and raycast interactions for both 3D world geometry and `.uikitml` spatial panels.
+- **Physics & Snap-Target System:** Calculates distance vectors between held sub-parts and receiver target sockets. If distance is under `0.05m`, the outline shader switches to **Neon Green (`#00FF66`)** and locks physics coordinates.
+- **Visual Feedback Pipeline:** Applies dynamic material outlines across 3D meshes:
+  - **Sky Blue (`#00D2FF`):** Hover or active selection from wall/bench.
+  - **Neon Green (`#00FF66`):** Valid assembly snap-point alignment.
+  - **Alert Red (`#FF3333`):** Invalid placement or active disassembly mode.
 
 ---
 
 ## ✨ Core Features
 
 ### 🔧 1. Modular Weapon Assembly
-- Build weapons using interchangeable components.
-- Discover compatible attachment sockets.
-- Get visual feedback when attaching parts.
-- Receive instant weapon-stat updates.
-- Remove attached physics bodies to ensure stable assembly.
+- Build 5 signature firearms using interchangeable modular components (Receivers, Barrels, Stocks, Scopes, Magazines)[cite: 9, 15].
+- Visual snapping feedback with dynamic neon outline shaders.
+- Instant weapon-stat updates as components are added.
 
-### 🔥 2. Interactive Weld Forge
-A hands-on welding system where precision matters.
+### 🔥 2. Interactive Weld Forge & Torch
+- Precision hands-first torch welding along physical seams.
+- Dynamic spark emitters, heat glow, and cooling bead trails.
+- Real-time heat calculation (Perfect, Weak, or Burn ratings).
 
-- Follow visible welding seams.
-- Maintain the correct torch movement speed.
-- Experience realistic heat and cooling effects.
-- Earn welding quality ratings:
-  - **Perfect:** Consistent movement and precision.
-  - **Weak:** Torch moves too quickly.
-  - **Burn:** Excessive heat from moving too slowly.
-- Dynamic sparks, heat glow, and welding bead trails.
+### 🎯 3. Interactive Shooting Range
+- Hand-aiming physics with true recoil, bullet drop, and shot spread.
+- Interactive targets (static, sliding, popup) with accuracy multiplier rewards.
 
-### 🛠️ 3. Disassembly & Repair
-- Place weapons inside the repair vise.
-- Remove components using screwdriver and hammer interactions.
-- Inspect weapon durability, rust, and cracks.
-- Repair damaged components through a progress-based repair system.
+### 💰 4. Economy & Progression
+- Earn credits and XP to unlock new blueprints, component skins, and customer orders[cite: 14, 16].
+- Dynamic reward triggers and coin animations.
 
-### 🎯 4. Interactive Shooting Range
-Test your custom-built weapons.
-
-- Hand-direction-based aiming.
-- Recoil and weapon kickback.
-- Bullet drop and shot spread.
-- Muzzle flashes and bullet tracers.
-- Static, sliding, and popup targets.
-- Earn rewards for accuracy, distance, and shooting streaks.
-
-### 💰 5. Economy & Progression
-- Earn coins from successful activities.
-- Gain XP through building, welding, repairing, and shooting.
-- Level up to unlock new content.
-- Discover new weapon components, skins, and customer orders.
-- Watch coins fly during reward animations.
-
-### 📋 6. Customer Orders
-Fulfil blueprint-based customer requests.
-
-Example:
-- Accuracy: 70+
-- Magazine Capacity: 12+
-- Required components: Based on blueprint.
-
-Complete orders to earn bonus cash and reputation.
-
-### 🔐 7. Personal Weapon Safe
-Build your own firearm collection.
-
-- Place completed weapons inside your safe.
-- Interactive safe door animations.
-- Miniature weapon display rack.
-- Weapon statistics and collection tracking.
-- Collect five signature firearms.
-
-### 💡 8. Contextual Guide System
-- Floating instruction cards.
-- Simple icons and short instructions.
-- Guides appear near relevant workshop objects.
-- Automatically hide after successful interactions.
-- Use the `?` help pad to restore instructions.
-
-### ⏸️ 9. Smart Pause & Resume
-- Detect VR visibility changes.
-- Detect lost hand tracking.
-- Preserve the current gameplay state.
-- Resume exactly where the player left off.
+### 🔐 5. Personal Weapon Safe
+- Interactive safe door animations and 3D display racks.
+- Store completed builds and track full collection statistics[cite: 14].
 
 ---
 
 ## 🖐️ Hand-First VR Experience
 
-GunMaker3D is designed around natural hand interactions.
-
-**No controllers required.**
-
-| Interaction | Description |
-|---|---|
-| Hand Tracking | Primary input method |
-| Palm Calibration | Both palms rest flat on the surface |
-| Grab & Move | Pick up and position components |
-| Snap System | Attach compatible components |
-| Torch Movement | Perform precision welding |
-| Tool Interaction | Repair and disassemble weapons |
-| Hand Aiming | Aim weapons using hand direction |
-
-### Initial Calibration
-
-The workshop starts with a simple calibration sequence:
-
-1. Place both palms flat on the calibration surface.
-2. Hold for approximately 4–5 seconds.
-3. Watch the two calibration rings expand and merge.
-4. The workshop bench builds into the scene.
-
-Lifting either hand early reverses the calibration progress.
+| Gesture / Input | Action Description | Visual Feedback |
+|---|---|---|
+| **Palms Flat** | Workspace boundary calibration | Merging glowing rings |
+| **Pinch & Drag** | Grab and position 3D gun components | Sky Blue outline (`#00D2FF`) |
+| **Snap Alignment** | Intersect part with receiver socket | Neon Green outline (`#00FF66`) |
+| **Palm Hold / Joystick** | Trigger floating 3D Radial Weapon Wheel | Holographic 8-slice menu[cite: 5, 15] |
+| **Torch Grip** | Fuse components along welding seams | Spark particles & heat glow |
 
 ---
 
-## 🥽 Target Platforms
+## 🥽 Platform Compatibility
 
-**Primary Target:** Meta Quest standalone VR.
-
-| Device | Target |
-|---|---|
-| Meta Quest 1 | Supported target |
-| Meta Quest 2 | Supported target |
-| Meta Quest 3 | Supported target |
-| Quest Browser | WebXR |
-| Desktop | Development and testing fallback |
-
-The experience is designed around the weakest target device to maintain performance across the supported hardware range.
-
-**Experience Mode:** VR only. Passthrough and scene understanding are not required.
+| Device | Support Level | Mode |
+|---|---|---|
+| **Meta Quest 3** | Target / Optimized | WebXR Standalone |
+| **Meta Quest 2** | Supported | WebXR Standalone |
+| **Quest Browser** | Supported | Native WebXR |
+| **Desktop / Dev** | Testing Fallback | Mouse Drag/Spin Pointer-Lock |
 
 ---
 
-## 🏆 Competition Goals
+## 🏆 Meta VR Start Developer Competition 2026
 
-**Meta VR Start Developer Competition 2026**
+Designed strictly to excel in the **Gaming** and **New Experience** tracks under three key Meta Quest design rules:
 
-Target tracks:
-- Gaming
-- New Experience
-
-Target awards:
-- 🥇 Best First Five Minutes
-- 🥇 Boldest Original Concept
-
-### Design Principles
-
-Every feature must pass three experience tests:
-
-**✈️ Airplane Seat Test**
-Every interaction should work within approximately 0.6 metres (2 feet), while seated.
-
-**🚌 Bus Stop Test**
-Players should experience a complete and satisfying gameplay moment in under 10 minutes.
-
-**📦 Take-It-Away Test**
-No third-party service dependencies. Everything required for the experience is built into the project.
+- ✈️ **Airplane Seat Test:** Seated-optimized inside a 0.6m (2-foot) interactive radius.
+- 🚌 **One Bus Stop Test:** Complete, satisfying gameplay loops delivered in 10 minutes or less.
+- 📦 **Take-It-Away Test:** 100% self-contained, standalone experience with zero third-party cloud dependencies.
 
 ---
 
-## 📈 Gameplay Progression
+## 🧱 Tech Stack
 
-The progression system is designed to provide an immediate reward while encouraging long-term collection.
-
-| Stage | Gameplay |
-|---|---|
-| 01 | Calibrate and enter the workshop |
-| 02 | Assemble your first firearm |
-| 03 | Weld and finish the weapon |
-| 04 | Test it at the shooting range |
-| 05 | Earn coins and XP |
-| 06 | Complete customer orders |
-| 07 | Unlock components and skins |
-| 08 | Build your five-gun collection |
-
-**Target session:** First weapon quickly; complete five-gun collection in approximately 30–45 minutes.
-
----
-
-## 🧱 Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| IWSDK | 3D scene and XR application framework |
-| WebXR | Browser-based VR experience |
-| Meta Quest | Target hardware |
-| Hand Tracking | Primary interaction system |
-| TypeScript | Application logic |
-| Three.js / IWSDK rendering | 3D scene rendering |
+- **Framework:** Meta Immersive Web SDK (IWSDK)
+- **Runtime:** WebXR Device API
+- **Language:** TypeScript
+- **Graphics Engine:** Three.js / WebGL
+- **Physics Engine:** Havok Physics for WebXR
+- **UI Architecture:** Spatial UIKitML (`.uikitml`)
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
-- Node.js
-- npm
-- Git
-- A compatible browser
-- Meta Quest headset for VR testing
+- Node.js (v18+ recommended)
+- npm / pnpm
+- Meta Quest 2 / 3 or Meta Quest Developer Hub (MQDH) for headset testing
 
 ### Installation
 
-Clone the repository:
-
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+# Clone the repository
+git clone [https://github.com/your-username/gunmaker3d.git](https://github.com/your-username/gunmaker3d.git)
 cd gunmaker3d
-```
 
-Install dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-Start the development server:
-
-```bash
+# Start local dev server with IWSDK live reloading
 npm run dev
-```
-
-Open the managed browser experience and use the Runtime and Editor controls to switch between the running application and its authored scene.
-
-### Development Configuration
-
-The project uses:
-
-- `iwsdk.config.json` — Declarative scene, asset, component, XR, and emulator configuration.
-- `src/index.ts` — Application entry point and runtime systems.
-- `src/components.ts` — Component registrations.
-- `src/scene-assets/` — Procedurally authored scene assets.
-
-Runtime application systems remain explicitly registered in the application entry point.
-
----
-
-## 📁 Project Structure
-
-```text
-gunmaker3d/
-│
-├── public/
-│   └── ui/
-│
-├── src/
-│   ├── index.ts
-│   ├── components.ts
-│   │
-│   ├── scene-assets/
-│   │   ├── studio.scene-asset.ts
-│   │   └── decor.scene-asset.ts
-│   │
-│   ├── components/
-│   └── systems/
-│
-├── docs/
-│   └── images/
-│       ├── workshop-preview.png
-│       ├── workshop.png
-│       ├── assembly.png
-│       ├── welding.png
-│       ├── range.png
-│       ├── safe.png
-│       └── progression.png
-│
-├── iwsdk.config.json
-├── package.json
-└── README.md
-```
-
-*The structure above is a documentation example; actual folders may evolve during development.*
-
----
-
-## 📚 Documentation & Resources
-
-- [IWSDK Documentation](https://iwsdk.dev/)
-- [Minimal Scene Walkthrough](https://iwsdk.dev/guides/01b-minimal-scene.html)
-- [XR Testing & IWER Emulator Controls](https://iwsdk.dev/guides/02-testing-experience.html#iwer-controls)
-- [WebXR Documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API)
-
----
-
-## 🛠️ Development Philosophy
-
-GunMaker3D focuses on:
-
-- Natural, controller-free interactions.
-- Responsive and intuitive 3D mechanics.
-- Optimized performance for standalone VR.
-- Meaningful feedback through visual and audio effects.
-- Short, rewarding gameplay sessions.
-- A complete experience without external service dependencies.
-
----
-
-## 📌 Project Status
-
-<sub>Active Development — Meta VR Start Developer Competition 2026</sub>
-
-Gameplay systems, workshop interactions, weapon assembly, welding, shooting, and progression are developed as part of the GunMaker3D experience.
-
----
-
-<p align="center">
-  <b>🔫 GunMaker3D</b>
-  <br />
-  <i>Build Your Weapon. Master Your Craft.</i>
-  <br /><br />
-  Made with passion for immersive VR experiences.
-</p>
